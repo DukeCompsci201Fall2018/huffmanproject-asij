@@ -59,7 +59,6 @@ public class Diff
     	try {
     		ourFiles = null;
             SwingUtilities.invokeAndWait(new Runnable() {
-                @Override
                 public void run () {
                     int result = 0;
                     result = ourChooser.showOpenDialog(null);

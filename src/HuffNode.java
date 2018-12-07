@@ -50,7 +50,6 @@ public class HuffNode implements Comparable<HuffNode> {
 	 * 
 	 * @return -1 if this < o, +1 if this > o, and 0 if this == 0
 	 */
-	@Override
 	public int compareTo(HuffNode other) {
 		return myWeight - other.myWeight;
 	}
