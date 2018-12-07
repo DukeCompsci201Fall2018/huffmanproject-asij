@@ -1,8 +1,5 @@
 import java.util.PriorityQueue;
 
-/**
- * Christopher Warren
- */
 
 /**
  * Although this class has a history of several years,
@@ -13,6 +10,7 @@ import java.util.PriorityQueue;
  * and including debug and bits read/written information
  * 
  * @author Owen Astrachan
+ * @author Christopher Warren and Samuel Zheng
  */
 
 public class HuffProcessor {
@@ -69,6 +67,7 @@ public class HuffProcessor {
 			}
 		}
 
+
 		while (pq.size() > 1) {
 			HuffNode left = pq.remove();
 			HuffNode right = pq.remove();
@@ -84,17 +83,17 @@ public class HuffProcessor {
 
 	private String[] makeCodingsFromTree(HuffNode root) {
 		String[] code = new String[ALPH_SIZE+1];
-		codingHelper(root, "", code);
+		codingHelper(code, root, "");
 		return code;
 	}
 
-	private void codingHelper(HuffNode root, String string, String[] code) {
+	private void codingHelper(String[] code, HuffNode root, String string) {
 		if (root.myLeft == null && root.myRight == null) {
 			code[root.myValue] = string;
 			return;
 		}
-		codingHelper(root.myLeft, string+"0", code);
-		codingHelper(root.myRight, string+"1", code);
+		codingHelper(code, root.myLeft, string + "0");
+		codingHelper(code, root.myRight, string + "0");
 	}
 
 	private void writeHeader (HuffNode root, BitOutputStream out) {
@@ -109,15 +108,13 @@ public class HuffProcessor {
 		}
 	}
 
-	private void writeCompressedBits(String[] codings, BitInputStream in, BitOutputStream out) { int bit = in.readBits(BITS_PER_WORD);
-		for (int i = 0; i < codings.length; i++) {
-			if (codings[i] != null) {
-				out.writeBits(codings[i].length(), Integer.parseInt(codings[i],2));
-			}
+	private void writeCompressedBits(String[] codings, BitInputStream in, BitOutputStream out) {
+		while (true) {
+			int bit = in.readBits(BITS_PER_WORD);
+			if (bit == -1) break;
+			String output = codings[bit];
+			out.writeBits(output.length(), Integer.parseInt(output, 2));
 		}
-
-		String output = codings[PSEUDO_EOF];
-		out.writeBits(output.length(), Integer.parseInt(output, 2));
 	}
 
 	private int[] readForCounts(BitInputStream in) {

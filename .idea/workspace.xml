@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="befc73bf-0636-4054-9ed2-e1df57b5087c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/data/hidden1.txt.hf" beforeDir="false" afterPath="$PROJECT_DIR$/data/hidden1.txt.hf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HuffProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuffProcessor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,19 +37,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1989" />
+          <entry key="java" value="2181" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1989" />
+          <entry key="JAVA" value="2181" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HuffMainDecompress.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -59,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HuffProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
+            <state relative-caret-position="-809">
+              <caret line="110" column="96" selection-start-line="110" selection-start-column="96" selection-end-line="110" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -112,7 +111,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544160942625" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544161646938" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -159,25 +158,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="720" height="841" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" sideWeight="0.50065875" side_tool="true" weight="0.27935722" />
-      <window_info active="true" content_ui="combo" x="800" y="137" width="203" height="647" id="Project" order="5" sideWeight="0.49934125" visible="true" weight="0.179941" />
+      <window_info content_ui="combo" x="800" y="137" width="203" height="647" id="Project" order="5" sideWeight="0.49934125" visible="true" weight="0.179941" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="3" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32977304" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="bottom" id="Run" order="10" visible="true" weight="0.24966623" />
+      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.24966623" />
       <window_info anchor="right" id="Palette" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
@@ -199,17 +199,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HuffProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="125" column="13" selection-start-line="125" selection-start-column="13" selection-end-line="125" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HuffMainDecompress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HuffProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-809">
+          <caret line="110" column="96" selection-start-line="110" selection-start-column="96" selection-end-line="110" selection-end-column="96" />
         </state>
       </provider>
     </entry>
