@@ -53,7 +53,11 @@ public class HuffProcessor {
 		writeHeader(root,out);
 
 		in.reset();
+
 		writeCompressedBits(codings,in,out);
+		String hack = codings[PSEUDO_EOF];
+		out.writeBits(hack.length(), Integer.parseInt(hack, 2));
+
 		out.close();
 	}
 
@@ -67,6 +71,7 @@ public class HuffProcessor {
 			}
 		}
 
+		pq.add(new HuffNode(PSEUDO_EOF,0));
 
 		while (pq.size() > 1) {
 			HuffNode left = pq.remove();
@@ -93,7 +98,7 @@ public class HuffProcessor {
 			return;
 		}
 		codingHelper(code, root.myLeft, string + "0");
-		codingHelper(code, root.myRight, string + "0");
+		codingHelper(code, root.myRight, string + "1");
 	}
 
 	private void writeHeader (HuffNode root, BitOutputStream out) {
@@ -102,7 +107,7 @@ public class HuffProcessor {
 			out.writeBits(BITS_PER_WORD+1, root.myValue);
 		}
 		else {
-			out.writeBits(1,0);
+			out.writeBits(1, root.myValue);
 			writeHeader(root.myLeft, out);
 			writeHeader(root.myRight, out);
 		}
@@ -111,7 +116,9 @@ public class HuffProcessor {
 	private void writeCompressedBits(String[] codings, BitInputStream in, BitOutputStream out) {
 		while (true) {
 			int bit = in.readBits(BITS_PER_WORD);
-			if (bit == -1) break;
+			if (bit == -1) {
+				break;
+			}
 			String output = codings[bit];
 			out.writeBits(output.length(), Integer.parseInt(output, 2));
 		}
@@ -119,7 +126,6 @@ public class HuffProcessor {
 
 	private int[] readForCounts(BitInputStream in) {
 		int [] data = new int[ALPH_SIZE+1];
-		data[PSEUDO_EOF] = 1;
 		while (true) {
 			int value = in.readBits(BITS_PER_WORD);
 			if (value == -1) {
@@ -127,6 +133,9 @@ public class HuffProcessor {
 			}
 			data[value]++;
 		}
+
+		data[PSEUDO_EOF] = 1;
+
 		return data;
 	}
 
@@ -195,7 +204,7 @@ public class HuffProcessor {
 					if (current.myValue == PSEUDO_EOF)
 						break;   // out of loop
 					else {
-						out.writeBits(BITS_PER_WORD,current.myValue);
+						out.writeBits(BITS_PER_WORD, current.myValue);
 						current = root; // start back after leaf
 					}
 				}
