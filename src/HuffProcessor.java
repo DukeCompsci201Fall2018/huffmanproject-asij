@@ -10,9 +10,8 @@ import java.util.PriorityQueue;
  * and including debug and bits read/written information
  * 
  * @author Owen Astrachan
- * @author Christopher Warren and Samuel Zheng
+ * @author Christopher Warren and Samuel Zhang
  */
-
 public class HuffProcessor {
 
 	public static final int BITS_PER_WORD = 8;
@@ -97,6 +96,7 @@ public class HuffProcessor {
 			code[root.myValue] = string;
 			return;
 		}
+		
 		codingHelper(code, root.myLeft, string + "0");
 		codingHelper(code, root.myRight, string + "1");
 	}
@@ -115,10 +115,13 @@ public class HuffProcessor {
 
 	private void writeCompressedBits(String[] codings, BitInputStream in, BitOutputStream out) {
 		while (true) {
+
 			int bit = in.readBits(BITS_PER_WORD);
+
 			if (bit == -1) {
 				break;
 			}
+
 			String output = codings[bit];
 			out.writeBits(output.length(), Integer.parseInt(output, 2));
 		}
@@ -127,6 +130,7 @@ public class HuffProcessor {
 	private int[] readForCounts(BitInputStream in) {
 		int [] data = new int[ALPH_SIZE+1];
 		while (true) {
+
 			int value = in.readBits(BITS_PER_WORD);
 			if (value == -1) {
 				break;
@@ -164,7 +168,7 @@ public class HuffProcessor {
 		out.close();
 	}
 
-	public HuffNode readTreeHeader(BitInputStream in) {
+	private HuffNode readTreeHeader(BitInputStream in) {
 
 		int bit = in.readBits(1);
 
@@ -182,7 +186,7 @@ public class HuffProcessor {
 		}
 	}
 
-	public void readCompressedBits (HuffNode root, BitInputStream in, BitOutputStream out) {
+	private void readCompressedBits (HuffNode root, BitInputStream in, BitOutputStream out) {
 
 		HuffNode current = root;
 
