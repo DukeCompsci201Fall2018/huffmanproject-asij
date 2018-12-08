@@ -168,6 +168,7 @@ public class HuffProcessor {
 	/**
 	 * Recursive method
 	 * @param in
+	 * 		
 	 * @return HuffNode
 	 */
 	private HuffNode readTreeHeader(BitInputStream in) {
@@ -182,7 +183,8 @@ public class HuffProcessor {
 	}
 
 	/**
-	 * 
+	 * Helper method that traverses tree from root going
+	 * left or right depending on bit's of 0 or 1 respectively.
 	 * @param root
 	 * @param in
 	 * @param out
@@ -195,16 +197,14 @@ public class HuffProcessor {
 			int bits = in.readBits(1);
 
 			if (bits == -1) throw new HuffException("bad input, no PSEUDO_EOF");
-			else {
-				if (bits == 0) current = current.myLeft;
-				else 		   current = current.myRight;
+			if (bits == 0) current = current.myLeft;
+			else 		   current = current.myRight;
 			
-				if (current.myLeft == null && current.myRight == null) {
-					if (current.myValue == PSEUDO_EOF) break; // value is PSEUDO_EOF so we move on
-					else {
-						out.writeBits(BITS_PER_WORD, current.myValue);
-						current = root; // start back after leaf
-					}
+			if (current.myLeft == null && current.myRight == null) {
+				if (current.myValue == PSEUDO_EOF) break; // value is PSEUDO_EOF so we move on
+				else {
+					out.writeBits(BITS_PER_WORD, current.myValue);
+					current = root; // start back after leaf
 				}
 			}
 		}
